@@ -17,6 +17,7 @@ int main(){
 
     while(playerScore < winScore && compScore < winScore){
         // Player's move
+        printf("-------------------------------\n");
         printf("What do you choose:\n1. Rock\n2. Paper\n3.Scissors\nType 1, 2 or 3: \n");
         scanf("%d", &currMove);
 
@@ -24,15 +25,15 @@ int main(){
         compMove = generateRandomNumber(1,3);
 
         if(currMove == compMove){
-            printf("It is a DRAW. Next Move\n\n");
             printScores(playerScore, compScore);
+            printf("It is a DRAW. Next Move\n\n");
         }
         else if((currMove==1 && compMove==2) || (currMove==2 && compMove==3) || (currMove==3 && compMove==1)){
             compScore++;printScores(playerScore, compScore);
             printf("Computer won this round\n\n");
         }
         else if((currMove==2 && compMove==1) || (currMove==3 && compMove==2) || (currMove==1 && compMove==3)){
-            compScore++;printScores(playerScore, compScore);
+            playerScore++;printScores(playerScore, compScore);
             printf("You won this round\n\n");
         }
         else{
@@ -64,5 +65,5 @@ int generateRandomNumber(int min, int max){
 
 
 void printScores(int p, int c){
-    printf("Computer Score:%d\nYour Score:%d\n", c,p);
+    printf("\nComputer Score:%d\nYour Score:%d\n", c,p);
 }
